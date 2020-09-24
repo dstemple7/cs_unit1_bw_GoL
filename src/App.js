@@ -2,12 +2,11 @@ import React, {useState, useCallback, useRef} from 'react';
 import produce from 'immer'
 import './index.css'
 
-
 function App() {
 
   let [size, setSize] = useState(0)
-  let [numRows, setNumRows] = useState(25)
-  let [numCols, setNumCols] = useState(25)
+  let [numRows, setNumRows] = useState(33)
+  let [numCols, setNumCols] = useState(33)
   let [counter, setCounter] = useState(0)
   const [running, setRunning] = useState(false)
   const runningRef = useRef(running)
@@ -147,6 +146,7 @@ function App() {
   return (
     <>
       <h1 style={{color:'white'}}>ΖΩΗ</h1>
+      <div class="buttons-div">
       <button>Generation: {counter}</button>
       <button onClick={() => {
         setRunning(!running)
@@ -162,7 +162,7 @@ function App() {
           runningRef.current = true
           runFastSimulation()
         }
-      }}>{running ? 'stop' : 'start fast'}
+      }}>{'start fast'}
       </button>
       <button onClick={() => {
         setRunning(!running)
@@ -170,7 +170,7 @@ function App() {
           runningRef.current = true
           runSlowSimulation()
         }
-      }}>{running ? 'stop' : 'start slow'}
+      }}>{'start slow'}
       </button>
       <button onClick={() => {
         const rows = []
@@ -183,14 +183,15 @@ function App() {
         random
       </button>
       <button onClick={() => {
-        setGrid(generateEmptyGrid())
-        setCounter(0)
+        window.location.reload(true)
       }}
       >
         reset
       </button>
       <button onClick={pinkMe}>PINK ME!!!</button>
       <button onClick={rules}>about</button>
+      </div>
+      <h3 style={{color:'white', fontStyle:'italic'}}>to-do: click "random" button above or start clicking below to make your own design</h3>
       {/* <br />
       <label style={{color: 'white'}}>Set the Canvas Size </label>
       <input
